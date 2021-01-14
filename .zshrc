@@ -70,6 +70,9 @@ else
     export EDITOR='code'
 fi
 
+# Open VSCode
+code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }
+
 # --------------------------------------------------------------------------
 # edit ~/.zshrc
 alias ec="$EDITOR $HOME/.zshrc"
