@@ -137,6 +137,9 @@ brew 'wget'                     # -- retrieves content from web servers
 brew 'hugo'                     # -- framework for building websites
 brew 'miniupnpc'                # -- enabling applications to access the services provided by an UPnP "Internet Gateway Device"
 
+brew 'gnupg'                    # -- GNU Pretty Good Privacy (PGP) package
+brew 'pinentry-mac'             # -- Pinentry for GPG on Mac
+
 # more messengers ;)
 cask 'slack'
 cask 'telegram'

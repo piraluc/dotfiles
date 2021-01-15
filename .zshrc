@@ -62,6 +62,9 @@ fi
 # eksctl
 # eval "$(eksctl completion zsh)"
 
+# gpg
+export GPG_TTY=$(tty)
+
 # --------------------------------------------------------------------------
 # Preferred editor for local and remote sessions
 if [ -n "$SSH_CONNECTION" ]; then
