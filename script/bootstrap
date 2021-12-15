@@ -13,8 +13,9 @@ popd >/dev/null
 
 echo "--> linking Oh My Zsh custom"
 for subdir in plugins themes; do
+    mkdir -p "$HOME/.oh-my-zsh/custom/$subdir"
     pushd "$HOME"/.dotfiles/.oh-my-zsh/custom/$subdir/ >/dev/null
-    ln -sf $(pwd)/* "$HOME"/.oh-my-zsh/custom/$subdir
+    ln -sf "$(pwd)"/* "$HOME/.oh-my-zsh/custom/$subdir"
 done
 popd >/dev/null
 
