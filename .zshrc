@@ -5,13 +5,18 @@ _path+="$HOME/.bin"
 _path+=":$HOME/.local/bin"
 _path+=":$HOME/.tgenv/bin"
 _path+=":$HOME/.helmenv/bin"
+_path+=":/usr/local/opt/coreutils/libexec/gnubin" # use Homebrew GNU tools with their usual names
 _path+=":$GOPATH/bin"
 _path+=":$HOME/.krew/bin"
 _path+=":$HOME/.cargo/bin"
 
+fpath=(~/.oh-my-zsh/custom $fpath)
+autoload -Uz compinit && compinit -i
+
 PATH="$_path:$PATH"
 TERM="xterm-256color"
 
+export APPLE_SSH_ADD_BEHAVIOR="macos"
 ssh-add -K ~/.ssh/id_rsa # macOS: passphrase will also be stored in the user's keychain
 
 # --------------------------------------------------------------------------
@@ -25,10 +30,11 @@ HISTCONTROL=ignoredups:ignorespace
 source "$ZSH/oh-my-zsh.sh"
 
 plugins=(
-    terraform
-    kubectl
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+  terraform
+  kubectl
+  brew
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 # zsh-syntax-highlighting  has to be the last plugin
 
@@ -55,8 +61,13 @@ setopt HIST_FIND_NO_DUPS
 # --------------------------------------------------------------------------
 # direnv
 if command -v direnv &>/dev/null; then
-    export DIRENV_WARN_TIMEOUT=120s
-    eval "$(direnv hook zsh)"
+  alias enva='direnv allow'
+  export DIRENV_WARN_TIMEOUT=360s
+  eval "$(direnv hook zsh)"
+fi
+
+if command -v cloud-nuke &>/dev/null; then
+  alias aws-nuke=cloud-nuke
 fi
 
 # eksctl
@@ -68,13 +79,14 @@ export GPG_TTY=$(tty)
 # --------------------------------------------------------------------------
 # Preferred editor for local and remote sessions
 if [ -n "$SSH_CONNECTION" ]; then
-    export EDITOR='vim'
+  export EDITOR='vim'
 else
-    export EDITOR='code'
+  export EDITOR='code'
 fi
 
 # Open VSCode
-code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }
+# does not work
+# code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }
 
 # --------------------------------------------------------------------------
 # edit ~/.zshrc
@@ -90,9 +102,14 @@ alias mtr='sudo /usr/local/sbin/mtr'
 # prune docker files
 alias docker-prune='docker system prune --all --force --volumes'
 
+# run super-linter
+alias super-linter='docker run -e RUN_LOCAL=true -v $(pwd):/tmp/lint github/super-linter'
+
+# pre-commit
 alias pre-commit-show='pre-commit run --all-files --show-diff-on-failure'
 
-# alias tf='terraform'
+alias tf='terraform'
+alias tf-docs='terraform-docs markdown table --output-file README.md --output-mode inject .'
 
 # --------------------------------------------------------------------------
 # Kubernetes
@@ -110,3 +127,27 @@ alias kc='kubectl'
 # alias kcon='kubectl config use-context'
 # alias kgc='kubectl config get-context'
 alias kalias='alias | egrep "kx=|kn=|kc=|kgi=|kgp=|kgs=|kct|kcon=|kgc="'
+alias kubetail=stern
+alias kc-get-ns='kubectl get ns -o jsonpath="{range .items[*]}{.metadata.name}{'\n'}"'
+alias brew-update='brew update; brew bundle check --global || ( brew bundle --global; brew link tfenv; brew bundle --cleanup --global); brew upgrade; brew cleanup'
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+  cd) fzf "$@" --preview 'tree -C {} | head -200' ;;
+  *) fzf "$@" ;;
+  esac
+}
+
+# change directory to topmost finder window while in terminal
+function ff { osascript -e 'tell application "Finder"' \
+  -e "if (${1-1} <= (count Finder windows)) then" \
+  -e "get POSIX path of (target of window ${1-1} as alias)" \
+  -e 'else' -e 'get POSIX path of (desktop as alias)' \
+  -e 'end if' -e 'end tell'; }
+
+function cdf { cd "$(ff $@)"; }
