@@ -37,7 +37,7 @@ brew 'derailed/popeye/popeye'   # -- A Kubernetes Cluster Sanitizer
 # brew 'helm'                   # -- Kubernetes package manager
 # brew 'helm@2'
 brew 'helmfile'                 # -- Deploy Kubernetes Helm Charts
-tap 'helm/tap'  
+tap 'helm/tap'
 brew 'chart-releaser'           # -- Helps Turn GitHub Repositories into Helm Chart Repositories
 
 # Cloud azure
@@ -45,7 +45,7 @@ brew 'chart-releaser'           # -- Helps Turn GitHub Repositories into Helm Ch
 # brew 'azure-cli'
 
 # Cloud google
-# cask 'google-cloud-sdk'       
+# cask 'google-cloud-sdk'
 
 # Cloud aws
 tap 'versent/homebrew-taps'
@@ -53,7 +53,7 @@ brew 'saml2aws'                 # -- enables you to login and retrieve AWS tempo
 brew 'awscli'                   # -- Official Amazon AWS command-line interface
 cask 'session-manager-plugin'   # -- Plugin for AWS CLI to start and end sessions that connect to managed instances
 tap 'weaveworks/tap'
-brew 'weaveworks/tap/eksctl'    # -- a CLI tool for creating clusters on EKS 
+brew 'weaveworks/tap/eksctl'    # -- a CLI tool for creating clusters on EKS
 cask 'aws-vault'                # -- ool to securely store and access AWS credentials in a development environment
 # brew 'awsume'                 # -- Utility for easily assuming AWS IAM roles from the command-line
 
@@ -79,13 +79,19 @@ brew 'pulumi'
 # cask 'powershell'             # -- Command-line shell and scripting language
 # brew 'unix2dos'               # -- Convert text between DOS, UNIX, and Mac formats
 
+# Kafka releated
+#brew 'kcat'                     # -- Generic command-line non-JVM Apache Kafka producer and consumer
+
 # Font related
 tap 'homebrew/cask-fonts'
-cask 'font-source-code-pro'     # -- Open Source Font 
-cask 'font-source-sans-pro'     # -- Open Source Font 
+cask 'font-source-code-pro'     # -- Open Source Font
+cask 'font-source-sans-pro'     # -- Open Source Font
 #cask 'font-fantasque-sans-mono'
 brew 'svn'                      # -- Required by font-source-*-pro
 brew 'highlight'                # -- Convert source code to formatted text with syntax highlighting
+#cask 'font-3270-nerd-font'      # -- I love nerd fonts
+#cask 'font-hack-nerd-font'      # -- I love nerd fonts
+#cask 'font-roboto-mono-for-powerline' # -- Monospace additions to Googles Roboto
 
 # QuickLook
 # See https://github.com/sindresorhus/quick-look-plugins
@@ -93,10 +99,12 @@ brew 'highlight'                # -- Convert source code to formatted text with 
 # cask 'quicklook-json'         # -- preview JSON files
 
 # git tools
-# brew 'git'                    # -- Distributed revision control system --> Better use macOS git 
+# brew 'git'                    # -- Distributed revision control system --> Better use macOS git
 brew 'gitup'                    # -- Git interface focused on visual interaction
 brew 'git-secret'               # -- Prevents you from committing sensitive information to a git repo
 brew 'pre-commit'               # -- Framework for managing multi-language pre-commit hooks
+#brew 'git-crypt'                # -- Enable transparent encryption/decryption of files in a git repo
+brew 'git-lfs'                  # -- Git extension for versioning large files
 
 # GitHub tools
 brew 'gh'                       # -- GitHub’s official command line tool
@@ -119,6 +127,7 @@ brew 'yamllint'                 # -- Linter for YAML files
 # brew 'spruce'                 # -- a general purpose YAML & JSON merging tool
 # cask 'postman'                # -- Collaboration platform for API development
 cask 'mactex-no-gui'            # -- Full TeX Live distribution without GUI applications, use with VScode extension "Latex Workshop"
+#cask 'iterm2'                  # -- Terminal emulator as alternative to Apple's Terminal app
 
 # Shell tools
 brew 'bash'                     # -- install bash version > 4 (macos provides version 3)
@@ -127,15 +136,18 @@ brew 'direnv'                   # -- Load/unload environment variables based on 
 brew 'shellcheck'               # -- Static analysis and lint tool, for (ba)sh scripts
 brew 'shfmt'                    #  Autoformat shell script source code
 brew "gnu-sed"                  # -- GNU `sed`
+#brew 'zsh'                     # -- Z shell
+#brew 'zsh-completions'         # -- Additional completion definitions for zsh
 
 # dev Node.js
 brew 'node'                    # -- Platform built on V8 to build network applications
+# brew 'nvm'                     # -- Manage multiple Node.js versions
 
 # dev Ruby
 # brew 'rbenv'                  # -- ruby version manager
 # brew 'ruby-build'             # -- Install various Ruby versions and implementations
 
-# dev Go 
+# dev Go
 brew 'golang'                   # -- programming language
 brew 'dep'                      # -- DEPRECATED dependency management tool for Go
 
@@ -143,6 +155,12 @@ brew 'dep'                      # -- DEPRECATED dependency management tool for G
 brew 'python3'
 brew 'pyenv-virtualenv'
 brew 'python-tk'
+
+# dev Java
+#brew 'openjdk'                 # -- Development kit for the Java programming language
+
+# dev kotlin
+#brew 'kotlin'                   # -- Statically typed programming language for the JVM (kotlin compiler)
 
 # dev Kubernetes
 brew 'skaffold', link: true     # -- cli tool that facilitates continuous development for Kubernetes applications.
@@ -181,3 +199,4 @@ cask 'atext'                    # -- Tool to replace abbreviations while typing
 # cask 'openconnect-gui'          # -- Graphical OpenConnect client
 # cask '1password-cli'            # -- Command-line helper for the 1Password password manager
 cask 'drawio'                   # -- free online diagram software
+#cask 'keepassxc'               # -- Password manager app
