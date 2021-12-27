@@ -56,11 +56,11 @@ brew 'terrascan'                # -- Detect compliance and security violations a
 brew 'pulumi'
 
 # Kubernetes
-tap 'johanhaleby/kubetail'      # -- aggregate (tail/follow) logs from multiple pods into one stream
 brew 'stern'                    # -- Tail multiple Kubernetes pods & their containers
 brew 'kubectx'                  # -- Tool that can switch between kubectl contexts easily and create aliases
 brew 'krew'                     # -- Package manager for kubectl plugins
 brew 'kube-ps1'                 # -- Kubernetes prompt info for bash and zsh
+tap 'derailed/k9s'
 brew 'derailed/k9s/k9s'         # -- provides a terminal UI to interact with your Kubernetes clusters
 # brew 'minikube'               # -- Run a Kubernetes cluster locally
 # Operator SDK
@@ -83,11 +83,11 @@ brew 'kcat'                     # -- Generic command-line non-JVM Apache Kafka p
 
 # Font related
 tap 'homebrew/cask-fonts'
-cask 'font-source-code-pro'     # -- Open Source Font
-cask 'font-source-sans-pro'     # -- Open Source Font
-#cask 'font-fantasque-sans-mono'
 brew 'svn'                      # -- Required by font-source-*-pro
 brew 'highlight'                # -- Convert source code to formatted text with syntax highlighting
+cask 'font-source-code-pro'     # -- Open Source Font
+cask 'font-source-sans-pro'     # -- Open Source Font
+cask 'font-fantasque-sans-mono'
 cask 'font-3270-nerd-font'      # -- I love nerd fonts
 cask 'font-hack-nerd-font'      # -- I love nerd fonts
 cask 'font-roboto-mono-for-powerline' # -- Monospace additions to Googles Roboto
@@ -124,8 +124,12 @@ brew 'yq'                       # -- Process YAML documents from the CLI
 brew 'yamllint'                 # -- Linter for YAML files
 # tap 'starkandwayne/cf'        # -- BOSH / Cloud Foundry / Kubernetes utilities
 # brew 'spruce'                 # -- a general purpose YAML & JSON merging tool
-# cask 'postman'                # -- Collaboration platform for API development
-cask 'mactex-no-gui'            # -- Full TeX Live distribution without GUI applications, use with VScode extension "Latex Workshop"
+cask 'postman'                  # -- Collaboration platform for API development
+#cask 'mactex-no-gui'            # -- Full TeX Live distribution without GUI applications, use with VScode extension "Latex Workshop"
+cask 'tex-live-utility'         # -- Graphical user interface for TeX Live Manager
+cask 'bibdesk'                  # -- Edit and manage bibliographies
+cask 'latexit'                  # -- Graphical interface for LaTeX
+cask 'texshop'                  # -- Tex previewer
 cask 'iterm2'                   # -- Terminal emulator as alternative to Apple's Terminal app
 cask 'microsoft-remote-desktop' # -- Remote desktop client
 
@@ -134,7 +138,7 @@ cask 'visual-studio-code'
 cask 'intellij-idea'
 cask 'webstorm'
 cask 'mps'                      # -- JetBrains MPS - Create your own domain-specific language
-cask 'staruml@3.2.2'
+#cask 'staruml@3.2.2'           # -- Need to figure out how to stay with version 3.2.2
 
 # Shell tools
 brew 'bash'                     # -- install bash version > 4 (macos provides version 3)
@@ -171,7 +175,7 @@ brew 'kotlin'                   # -- Statically typed programming language for t
 
 # dev Kubernetes
 brew 'skaffold', link: true     # -- cli tool that facilitates continuous development for Kubernetes applications.
-brew 'lens'                     # -- Kubernetes IDE
+cask 'lens'                     # -- Kubernetes IDE
 
 # miscellaneous tools
 #brew 'dialog'                  # -- Script-driven curses widgets (application and library)
@@ -213,11 +217,12 @@ cask 'spotify'
 cask '1password'
 cask 'miro'                     # -- Online collaborative whiteboard platform
 cask 'microsoft-office'
+cask 'adobe-acrobat-reader'
 cask 'microsoft-teams'
 cask 'yammer'
 cask 'discord'
 cask 'zoom'
-cask 'ykman'                    # -- Tool for managing your YubiKey configuration
+brew 'ykman'                    # -- Tool for managing your YubiKey configuration
 cask 'steam'
 cask 'balenaetcher'             # -- Tool to flash OS images to SD cards & USB drives
 cask 'gather'                   # -- Virtual video-calling space
