@@ -1,5 +1,5 @@
 # This file describes the desired state of brew installed apps if using the followimg commands::
-# brew bundle check --global || ( brew bundle --global; brew bundle --cleanup --global); brew upgrade; brew cleanup
+# alias brew-update='brew update; brew bundle check --global || ( brew bundle --global; brew bundle --cleanup --global); brew upgrade; brew cleanup'
 
 cask_args appdir: '/Applications'
 
@@ -9,43 +9,16 @@ tap 'homebrew/bundle'           # -- Bundler for non-Ruby dependencies from Home
 tap 'homebrew/services'         # -- Manage background services with macOS' launchctl daemon manager.
 
 # Docker Inc
-# kubectl lives in Docker App
 cask 'docker'
-# cask 'homebrew/cask-versions/docker-edge'
+#cask 'homebrew/cask-versions/docker-edge'
 
 # docker with besssl and whistles
 brew 'docker'
 brew 'docker-machine'
+brew 'docker-machine-nfs'
 brew 'docker-compose'
 brew 'docker-credential-helper'
-brew 'docker-machine-nfs'
 cask 'virtualbox'
-
-# Kubernetes
-tap 'johanhaleby/kubetail'      # -- aggregate (tail/follow) logs from multiple pods into one stream
-brew 'stern'                    # -- Tail multiple Kubernetes pods & their containers
-brew 'kubectx'                  # -- Tool that can switch between kubectl contexts easily and create aliases
-brew 'krew'                     # -- Package manager for kubectl plugins
-brew 'kube-ps1'                 # -- Kubernetes prompt info for bash and zsh
-brew 'derailed/k9s/k9s'         # -- provides a terminal UI to interact with your Kubernetes clusters
-# brew 'minikube'               # -- Run a Kubernetes cluster locally
-# Operator SDK
-brew 'operator-sdk'             # -- SDK for building Kubernetes applications
-brew 'derailed/popeye/popeye'   # -- A Kubernetes Cluster Sanitizer
-
-# Helm
-# brew 'helm'                   # -- Kubernetes package manager
-# brew 'helm@2'
-brew 'helmfile'                 # -- Deploy Kubernetes Helm Charts
-tap 'helm/tap'
-brew 'chart-releaser'           # -- Helps Turn GitHub Repositories into Helm Chart Repositories
-
-# Cloud azure
-# brew 'azure/draft/draft'
-# brew 'azure-cli'
-
-# Cloud google
-# cask 'google-cloud-sdk'
 
 # Cloud aws
 tap 'versent/homebrew-taps'
@@ -59,6 +32,13 @@ cask 'aws-vault'                # -- ool to securely store and access AWS creden
 
 # brew 'packer'                 # -- Tool for creating identical machine images for multiple platforms
 # cask 'multipass'              # -- Orchestrates virtual Ubuntu instances
+
+# Cloud azure
+# brew 'azure/draft/draft'
+# brew 'azure-cli'
+
+# Cloud google
+# cask 'google-cloud-sdk'
 
 # Terraform related
 brew 'graphviz'                 # -- Graph visualization software from AT&T and Bell Labs
@@ -75,12 +55,31 @@ brew 'terrascan'                # -- Detect compliance and security violations a
 # Pulumi related
 brew 'pulumi'
 
+# Kubernetes
+tap 'johanhaleby/kubetail'      # -- aggregate (tail/follow) logs from multiple pods into one stream
+brew 'stern'                    # -- Tail multiple Kubernetes pods & their containers
+brew 'kubectx'                  # -- Tool that can switch between kubectl contexts easily and create aliases
+brew 'krew'                     # -- Package manager for kubectl plugins
+brew 'kube-ps1'                 # -- Kubernetes prompt info for bash and zsh
+brew 'derailed/k9s/k9s'         # -- provides a terminal UI to interact with your Kubernetes clusters
+# brew 'minikube'               # -- Run a Kubernetes cluster locally
+# Operator SDK
+brew 'operator-sdk'             # -- SDK for building Kubernetes applications
+brew 'derailed/popeye/popeye'   # -- A Kubernetes Cluster Sanitizer
+
+# Helm
+brew 'helm'                     # -- Kubernetes package manager
+# brew 'helm@2'
+brew 'helmfile'                 # -- Deploy Kubernetes Helm Charts
+tap 'helm/tap'
+brew 'chart-releaser'           # -- Helps Turn GitHub Repositories into Helm Chart Repositories
+
+# Kafka releated
+brew 'kcat'                     # -- Generic command-line non-JVM Apache Kafka producer and consumer
+
 # Microsoft related
 # cask 'powershell'             # -- Command-line shell and scripting language
 # brew 'unix2dos'               # -- Convert text between DOS, UNIX, and Mac formats
-
-# Kafka releated
-#brew 'kcat'                     # -- Generic command-line non-JVM Apache Kafka producer and consumer
 
 # Font related
 tap 'homebrew/cask-fonts'
@@ -89,9 +88,9 @@ cask 'font-source-sans-pro'     # -- Open Source Font
 #cask 'font-fantasque-sans-mono'
 brew 'svn'                      # -- Required by font-source-*-pro
 brew 'highlight'                # -- Convert source code to formatted text with syntax highlighting
-#cask 'font-3270-nerd-font'      # -- I love nerd fonts
-#cask 'font-hack-nerd-font'      # -- I love nerd fonts
-#cask 'font-roboto-mono-for-powerline' # -- Monospace additions to Googles Roboto
+cask 'font-3270-nerd-font'      # -- I love nerd fonts
+cask 'font-hack-nerd-font'      # -- I love nerd fonts
+cask 'font-roboto-mono-for-powerline' # -- Monospace additions to Googles Roboto
 
 # QuickLook
 # See https://github.com/sindresorhus/quick-look-plugins
@@ -99,27 +98,27 @@ brew 'highlight'                # -- Convert source code to formatted text with 
 # cask 'quicklook-json'         # -- preview JSON files
 
 # git tools
-# brew 'git'                    # -- Distributed revision control system --> Better use macOS git
+brew 'git'                      # -- Distributed revision control system --> Better use macOS git
 brew 'gitup'                    # -- Git interface focused on visual interaction
 brew 'git-secret'               # -- Prevents you from committing sensitive information to a git repo
 brew 'pre-commit'               # -- Framework for managing multi-language pre-commit hooks
-#brew 'git-crypt'                # -- Enable transparent encryption/decryption of files in a git repo
+brew 'git-crypt'                # -- Enable transparent encryption/decryption of files in a git repo
 brew 'git-lfs'                  # -- Git extension for versioning large files
 
 # GitHub tools
 brew 'gh'                       # -- GitHub’s official command line tool
 brew 'gitversion'               # -- semantic versioning
 brew 'git-credential-manager'   # -- Stores Git credentials
-tap 'nektos/tap'                # -- ??
+cask 'github'                   # -- Desktop client for GitHub repositories
+cask 'gitkraken'                # -- Git client focusing on productivity
+tap 'nektos/tap'
 brew 'nektos/tap/act'           # -- Run your GitHub Actions locally
 
 # Editor & Terminal tools
-cask 'visual-studio-code'       # -- Open-source code editor
-cask 'alacritty'                # -- Cross-platform, GPU-accelerated terminal emulator
+#cask 'alacritty'               # -- Cross-platform, GPU-accelerated terminal emulator
 brew 'ripgrep'                  # -- a line-oriented search tool that recursively searches your current directory for a regex pattern.
 brew 'tmux'                     # -- Terminal multiplexer
 cask 'obsidian'                 # -- Knowledge base that works on top of a local folder of plain text Markdown files
-# yaml / json
 brew 'jq'                       # -- command-line JSON processor
 brew 'yq'                       # -- Process YAML documents from the CLI
 brew 'yamllint'                 # -- Linter for YAML files
@@ -127,21 +126,29 @@ brew 'yamllint'                 # -- Linter for YAML files
 # brew 'spruce'                 # -- a general purpose YAML & JSON merging tool
 # cask 'postman'                # -- Collaboration platform for API development
 cask 'mactex-no-gui'            # -- Full TeX Live distribution without GUI applications, use with VScode extension "Latex Workshop"
-#cask 'iterm2'                  # -- Terminal emulator as alternative to Apple's Terminal app
+cask 'iterm2'                   # -- Terminal emulator as alternative to Apple's Terminal app
+cask 'microsoft-remote-desktop' # -- Remote desktop client
+
+# IDEs
+cask 'visual-studio-code'
+cask 'intellij-idea'
+cask 'webstorm'
+cask 'mps'                      # -- JetBrains MPS - Create your own domain-specific language
+cask 'staruml@3.2.2'
 
 # Shell tools
 brew 'bash'                     # -- install bash version > 4 (macos provides version 3)
 brew 'fzf'                      # -- Command-line fuzzy finder written in Go
 brew 'direnv'                   # -- Load/unload environment variables based on $PWD
 brew 'shellcheck'               # -- Static analysis and lint tool, for (ba)sh scripts
-brew 'shfmt'                    #  Autoformat shell script source code
+brew 'shfmt'                    # -- Autoformat shell script source code
 brew "gnu-sed"                  # -- GNU `sed`
-#brew 'zsh'                     # -- Z shell
-#brew 'zsh-completions'         # -- Additional completion definitions for zsh
+brew 'zsh'                      # -- Z shell
+brew 'zsh-completions'          # -- Additional completion definitions for zsh
 
 # dev Node.js
-brew 'node'                    # -- Platform built on V8 to build network applications
-# brew 'nvm'                     # -- Manage multiple Node.js versions
+brew 'node'                     # -- Platform built on V8 to build network applications
+brew 'nvm'                      # -- Manage multiple Node.js versions
 
 # dev Ruby
 # brew 'rbenv'                  # -- ruby version manager
@@ -157,19 +164,20 @@ brew 'pyenv-virtualenv'
 brew 'python-tk'
 
 # dev Java
-#brew 'openjdk'                 # -- Development kit for the Java programming language
+brew 'openjdk'                  # -- Development kit for the Java programming language
 
 # dev kotlin
-#brew 'kotlin'                   # -- Statically typed programming language for the JVM (kotlin compiler)
+brew 'kotlin'                   # -- Statically typed programming language for the JVM (kotlin compiler)
 
 # dev Kubernetes
 brew 'skaffold', link: true     # -- cli tool that facilitates continuous development for Kubernetes applications.
+brew 'lens'                     # -- Kubernetes IDE
 
 # miscellaneous tools
-brew 'dialog'                   # -- Script-driven curses widgets (application and library)
-brew 'pandoc'                   # -- a universal document converter
-brew 'watch'                    # -- procps
-brew 'mosh'                     # -- mobile shell / Remote terminal application
+#brew 'dialog'                  # -- Script-driven curses widgets (application and library)
+#brew 'pandoc'                  # -- a universal document converter
+#brew 'watch'                   # -- procps
+#brew 'mosh'                    # -- mobile shell / Remote terminal application
 brew 'nmap'                     # -- utility for network discovery and security auditing
 brew 'coreutils'                # -- GNU core utilities
 brew 'tree'                     # -- recursive directory listing command
@@ -177,26 +185,40 @@ brew 'mtr'                      # -- improved traceroute
 brew 'keychain'                 # -- helps you to manage SSH and GPG keys in a convenient and secure manner
 brew 'wget'                     # -- retrieves content from web servers
 brew 'hugo'                     # -- framework for building websites
-brew 'miniupnpc'                # -- enabling applications to access the services provided by an UPnP "Internet Gateway Device"
+#brew 'miniupnpc'               # -- enabling applications to access the services provided by an UPnP "Internet Gateway Device"
 brew 'gnupg'                    # -- GNU Pretty Good Privacy (PGP) package
-brew 'pinentry-mac'             # -- Pinentry for GPG on Mac
-cask 'flux'                     # -- Adaptive brightness for external displays
+#brew 'pinentry-mac'            # -- Pinentry for GPG on Mac
+#cask 'flux'                    # -- Adaptive brightness for external displays
 
 # more messengers ;)
 cask 'slack'
 cask 'telegram'
 cask 'signal'
+cask 'whatsapp'
 
 # miscellaneous apps
 cask 'dropbox'                  # -- Client for the Dropbox cloud storage service
-cask 'alfred'                   # -- Application launcher and productivity software
-cask 'caffeine'                 # -- Utility that prevents the system from going to sleep
+#cask 'alfred'                  # -- Application launcher and productivity software
+#cask 'caffeine'                # -- Utility that prevents the system from going to sleep
 cask 'google-chrome'            # -- Web Browser
-cask 'hazel'                    # -- Automated organization
-cask 'calibre'                  # -- E-books management software
-cask 'grandperspective'         # -- Graphically shows disk usage within a file system
-cask 'atext'                    # -- Tool to replace abbreviations while typing
-# cask 'openconnect-gui'          # -- Graphical OpenConnect client
-# cask '1password-cli'            # -- Command-line helper for the 1Password password manager
-cask 'drawio'                   # -- free online diagram software
-#cask 'keepassxc'               # -- Password manager app
+#cask 'hazel'                   # -- Automated organization
+#cask 'calibre'                 # -- E-books management software
+#cask 'grandperspective'        # -- Graphically shows disk usage within a file system
+#cask 'atext'                   # -- Tool to replace abbreviations while typing
+#cask 'openconnect-gui'         # -- Graphical OpenConnect client
+cask '1password-cli'            # -- Command-line helper for the 1Password password manager
+#cask 'drawio'                  # -- free online diagram software
+cask 'keepassxc'                # -- Password manager app
+cask 'spotify'
+cask '1password'
+cask 'miro'                     # -- Online collaborative whiteboard platform
+cask 'microsoft-office'
+cask 'microsoft-teams'
+cask 'yammer'
+cask 'discord'
+cask 'zoom'
+cask 'ykman'                    # -- Tool for managing your YubiKey configuration
+cask 'steam'
+cask 'balenaetcher'             # -- Tool to flash OS images to SD cards & USB drives
+cask 'gather'                   # -- Virtual video-calling space
+cask 'blender'                  # -- 3D creation suite
