@@ -113,6 +113,7 @@ cask 'latexit'                  # -- Graphical interface for LaTeX
 cask 'texshop'                  # -- Tex previewer
 cask 'iterm2'                   # -- Terminal emulator as alternative to Apple's Terminal app
 cask 'microsoft-remote-desktop' # -- Remote desktop client
+brew 'awk'
 
 # IDEs
 cask 'visual-studio-code'
@@ -122,6 +123,7 @@ cask 'mps'                      # -- JetBrains MPS - Create your own domain-spec
 cask 'appcode'
 cask 'rider'
 #cask 'staruml@3.2.2'           # -- Need to figure out how to stay with version 3.2.2
+brew 'jupyterlab'
 
 cask 'fly'                      # -- CLI for Concourse
 
@@ -134,6 +136,7 @@ brew 'bash'                     # -- install bash version > 4 (macos provides ve
 #brew "gnu-sed"                 # -- GNU `sed`
 brew 'zsh'                      # -- Z shell
 brew 'zsh-completions'          # -- Additional completion definitions for zsh
+brew 'fzf'
 
 # dev Node.js
 brew 'nvm'                      # -- Manage multiple Node.js versions
@@ -153,9 +156,7 @@ brew 'python3'
 
 # dev Java
 brew 'openjdk'                  # -- Development kit for the Java programming language
-
-# dev kotlin
-brew 'kotlin'                   # -- Statically typed programming language for the JVM (kotlin compiler)
+brew 'kotlin'
 
 # dev Kubernetes
 brew 'skaffold', link: true     # -- cli tool that facilitates continuous development for Kubernetes applications.
