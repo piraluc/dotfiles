@@ -146,13 +146,8 @@ brew 'yarn'
 # brew 'rbenv'                  # -- ruby version manager
 # brew 'ruby-build'             # -- Install various Ruby versions and implementations
 
-# dev Go
-brew 'golang'                   # -- programming language
-
-# dev python
+brew 'golang'
 brew 'python3'
-#brew 'pyenv-virtualenv'
-#brew 'python-tk'
 
 # dev Java
 brew 'openjdk'                  # -- Development kit for the Java programming language
@@ -202,7 +197,6 @@ cask 'dropbox'                  # -- Client for the Dropbox cloud storage servic
 #cask 'openconnect-gui'         # -- Graphical OpenConnect client
 #cask '1password-cli'           # -- Command-line helper for the 1Password password manager
 #cask 'drawio'                  # -- free online diagram software
-#cask 'keepassxc'               # -- Password manager app
 cask 'spotify'
 cask '1password'
 cask 'keepassxc'
