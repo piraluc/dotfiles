@@ -4,15 +4,15 @@
 cask_args appdir: '/Applications'
 
 # Taps
-tap 'homebrew/core'             # -- Core formulae for the Homebrew package manager
 tap 'homebrew/bundle'           # -- Bundler for non-Ruby dependencies from Homebrew, Homebrew Cask, Mac App Store and Whalebrew
 tap 'homebrew/services'         # -- Manage background services with macOS' launchctl daemon manager.
 
-#  Inc
+# Virtualisation
 cask 'docker'
-#cask 'virtualbox'
+#cask 'virtualbox
+#cask 'podman-desktop'
 
-# Cloud aws
+# AWS
 tap 'versent/homebrew-taps'
 brew 'saml2aws'                 # -- enables you to login and retrieve AWS temporary credentials using with ADFS or PingFederate Identity Providers
 brew 'awscli'                   # -- Official Amazon AWS command-line interface
@@ -23,15 +23,14 @@ cask 'aws-vault'                # -- Tool to securely store and access AWS crede
 #brew 'awsume'                  # -- Utility for easily assuming AWS IAM roles from the command-line
 #brew 'aws-iam-authenticator'   # -- Using AWS EKS with kubectl
 
-# Cloud azure
+# Azure
 # brew 'azure/draft/draft'
 # brew 'azure-cli'
 
-# Cloud google
+# GCP
 # cask 'google-cloud-sdk'
 
-# Terraform related
-# terraform installed by tfenv
+# Terraform
 brew 'tfenv', link: true        # -- Terraform version manager
 brew 'tflint'                   # -- Linter for Terraform files
 brew 'terraform-docs'           # -- Tool to generate documentation from Terraform modules
@@ -41,7 +40,6 @@ brew 'tgenv', link: true        # -- Terragrunt version manager
 brew 'tfsec'                    # -- Static analysis security scanner for your terraform code
 brew 'terrascan'                # -- Detect compliance and security violations across Infrastructure as Code
 
-# Pulumi related
 brew 'pulumi'
 
 # Kubernetes
@@ -52,6 +50,7 @@ brew 'krew'                     # -- Package manager for kubectl plugins
 brew 'kube-ps1'                 # -- Kubernetes prompt info for bash and zsh
 tap 'derailed/k9s'
 brew 'derailed/k9s/k9s'         # -- provides a terminal UI to interact with your Kubernetes clusters
+brew 'kubeconform'
 # brew 'minikube'               # -- Run a Kubernetes cluster locally
 
 # Operator SDK
@@ -64,21 +63,24 @@ brew 'helmfile'                 # -- Deploy Kubernetes Helm Charts
 tap 'helm/tap'
 brew 'chart-releaser'           # -- Helps Turn GitHub Repositories into Helm Chart Repositories
 
-# Kafka releated
+# Kafka
 brew 'kcat'                     # -- Generic command-line non-JVM Apache Kafka producer and consumer
 
-# Font related
+# AI
+brew 'ollama'
+
+# Fonts
 tap 'homebrew/cask-fonts'
 brew 'svn'                      # -- Required by font-source-*-pro
 brew 'highlight'                # -- Convert source code to formatted text with syntax highlighting
 cask 'font-source-code-pro'     # -- Open Source Font
-cask 'font-source-sans-pro'     # -- Open Source Font
+cask 'font-source-sans-3'       # -- Open Source Font
 cask 'font-fantasque-sans-mono'
 cask 'font-3270-nerd-font'      # -- I love nerd fonts
 cask 'font-hack-nerd-font'      # -- I love nerd fonts
 cask 'font-roboto-mono-for-powerline' # -- Monospace additions to Googles Roboto
 
-# git tools
+# git
 brew 'git'                      # -- Distributed revision control system --> Better use macOS git
 #brew 'gitup'                   # -- Git interface focused on visual interaction
 #brew 'git-secret'              # -- Prevents you from committing sensitive information to a git repo
@@ -86,7 +88,7 @@ brew 'git'                      # -- Distributed revision control system --> Bet
 brew 'git-crypt'                # -- Enable transparent encryption/decryption of files in a git repo
 brew 'git-lfs'                  # -- Git extension for versioning large files
 
-# GitHub tools
+# GitHub
 brew 'gh'                       # -- GitHub’s official command line tool
 #brew 'gitversion'               # -- semantic versioning
 brew 'git-credential-manager'   # -- Stores Git credentials
@@ -106,6 +108,7 @@ brew 'yamllint'                 # -- Linter for YAML files
 # brew 'spruce'                 # -- a general purpose YAML & JSON merging tool
 brew 'telnet'
 cask 'postman'                  # -- Collaboration platform for API development
+cask 'bruno'
 cask 'mactex-no-gui'            # -- Full TeX Live distribution without GUI applications, use with VScode extension "Latex Workshop"
 cask 'tex-live-utility'         # -- Graphical user interface for TeX Live Manager
 cask 'bibdesk'                  # -- Edit and manage bibliographies
@@ -119,49 +122,59 @@ brew 'awk'
 cask 'visual-studio-code'
 cask 'intellij-idea'
 cask 'webstorm'
+cask 'datagrip'
 cask 'mps'                      # -- JetBrains MPS - Create your own domain-specific language
 cask 'appcode'
 cask 'rider'
 #cask 'staruml@3.2.2'           # -- Need to figure out how to stay with version 3.2.2
 brew 'jupyterlab'
+cask 'lens'                     # -- Kubernetes IDE
+brew 'skaffold', link: true     # -- cli tool that facilitates continuous development for Kubernetes applications.
+cask 'unity-hub'
 
-cask 'fly'                      # -- CLI for Concourse
+# Postgres
+brew 'libpq'
+cask 'pgadmin4'
 
-# Shell tools
+# Shell
 brew 'bash'                     # -- install bash version > 4 (macos provides version 3)
-#brew 'fzf'                     # -- Command-line fuzzy finder written in Go
+brew 'fzf'                     # -- Command-line fuzzy finder written in Go
 #brew 'direnv'                  # -- Load/unload environment variables based on $PWD
 #brew 'shellcheck'              # -- Static analysis and lint tool, for (ba)sh scripts
 #brew 'shfmt'                   # -- Autoformat shell script source code
 #brew "gnu-sed"                 # -- GNU `sed`
 brew 'zsh'                      # -- Z shell
 brew 'zsh-completions'          # -- Additional completion definitions for zsh
-brew 'fzf'
 
-# dev Node.js
+# Node.js
 brew 'nvm'                      # -- Manage multiple Node.js versions
-brew 'yarn'                     
+brew 'yarn'                
 
-# dev Ruby
-# brew 'rbenv'                  # -- ruby version manager
-# brew 'ruby-build'             # -- Install various Ruby versions and implementations
+# Build tools
+brew 'cmake'
 
+# Go
 brew 'golang'
+
+# Python
 brew 'python3'
 
-# dev Java
+# Java
 brew 'openjdk'                  # -- Development kit for the Java programming language
 brew 'kotlin'
+brew 'micronaut'
 
-# dev Kubernetes
-brew 'skaffold', link: true     # -- cli tool that facilitates continuous development for Kubernetes applications.
-cask 'lens'                     # -- Kubernetes IDE
+# .NET
+tap 'isen-ng/dotnet-sdk-versions'
+cask 'dotnet-sdk7-0-400'
+cask 'dotnet-sdk8-0-100'
 
-# dev swift
+# swift
 brew 'swiftlint'
 cask 'sf-symbols'
 
-cask 'pgadmin4'
+# Angular
+brew 'angular-cli'
 
 # miscellaneous tools
 #brew 'dialog'                  # -- Script-driven curses widgets (application and library)
@@ -173,18 +186,23 @@ cask 'pgadmin4'
 #brew 'tree'                    # -- recursive directory listing command
 #brew 'mtr'                     # -- improved traceroute
 #brew 'keychain'                # -- helps you to manage SSH and GPG keys in a convenient and secure manner
+#cask 'gpg-suite'
+brew 'openssh'
+brew 'pinentry-mac'
 brew 'wget'                     # -- retrieves content from web servers
 ##brew 'miniupnpc'              # -- enabling applications to access the services provided by an UPnP "Internet Gateway Device"
 brew 'gnupg'                    # -- GNU Pretty Good Privacy (PGP) package
 #brew 'pinentry-mac'            # -- Pinentry for GPG on Mac
 #cask 'flux'                    # -- Adaptive brightness for external displays
 brew 'hugo'
+brew 'ffmpeg'
 
 # more messengers ;)
 cask 'slack'
 cask 'telegram'
 cask 'signal'
 cask 'whatsapp'
+cask 'messenger'
 
 # miscellaneous apps
 cask 'dropbox'                  # -- Client for the Dropbox cloud storage service
@@ -196,23 +214,28 @@ cask 'dropbox'                  # -- Client for the Dropbox cloud storage servic
 #cask 'atext'                   # -- Tool to replace abbreviations while typing
 #cask 'openconnect-gui'         # -- Graphical OpenConnect client
 #cask '1password-cli'           # -- Command-line helper for the 1Password password manager
-#cask 'drawio'                  # -- free online diagram software
+cask 'drawio'                  # -- free online diagram software
 cask 'spotify'
 cask '1password'
 cask 'keepassxc'
 cask 'miro'
 cask 'microsoft-office'
 cask 'adobe-acrobat-reader'
-cask 'microsoft-teams'
-cask 'yammer'
 cask 'discord'
 cask 'zoom'
+cask 'webex'
 brew 'ykman'
 cask 'steam'
+cask 'steelseries-gg'
 cask 'balenaetcher'             # -- Tool to flash OS images to SD cards & USB drives
-#cask 'gather'                  # -- Virtual video-calling space
+cask 'gather'                  # -- Virtual video-calling space
 #cask 'blender'                 # -- 3D creation suite
 brew 'ykman'
-cask 'toggl-track'
 cask 'obs'
 cask 'google-chrome'
+cask 'deepl'
+cask 'raspberry-pi-imager'
+cask 'vlc'
+cask 'nvidia-geforce-now'
+cask 'background-music'
+cask 'amazon-chime'
